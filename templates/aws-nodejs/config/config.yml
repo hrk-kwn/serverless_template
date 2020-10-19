@@ -1,0 +1,29 @@
+# 設定ファイル
+# profile          : deployしたい環境のアクセスキー、シークレットキーをセットした名前
+# deploymentBucket : deployした時に作成されたファイルを格納するs3バケット名
+# environment      : lamudaで利用したい環境変数
+
+preview:
+  profile: p_name-preview
+  deployBucketName: p_name-preview-bucket
+  env:
+    DOMAIN: test.co.jp/
+    BUCKET: test-dev
+  role:
+    - Effect: "Allow"
+      Action:
+        - "s3:*"
+      Resource:
+        - "*"
+live:
+  profile: p_name-live
+  deployBucketName: p_name-live-bucket
+  env:
+    DOMAIN: test.co.jp/
+    BUCKET: test-live
+  role:
+    - Effect: "Allow"
+      Action:
+        - "s3:*"
+      Resource:
+        - "*"
